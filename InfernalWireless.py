@@ -1,13 +1,23 @@
 import wx
 #~ import infernal_wireless_gui_project
 import os
+import os.path 
 import MySQLdb
 from datetime import datetime
 
 os.system('/etc/init.d/apache2 start')
 os.system('/etc/init.d/mysql start')
 
-cxn = MySQLdb.connect('localhost','root',"")
+if os.path.exists('dbconnect.conf'):
+	print 'DB Config files is found'
+else:
+	print 'Creating DB config file'
+	import db_connect_creds
+
+
+dbfile = open('dbconnect.conf', 'r').readlines()
+
+cxn = MySQLdb.connect('localhost',str(dbfile[0]).replace('\n',''),str(dbfile[1]).replace('\n',''))
 
 date = datetime.now()
 

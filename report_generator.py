@@ -5,7 +5,9 @@ import ast
 import MySQLdb
 from datetime import datetime
 
-cxn = MySQLdb.connect('localhost','root',"")
+dbfile = open('dbconnect.conf', 'r').readlines()
+
+cxn = MySQLdb.connect('localhost',user=str(dbfile[0]).replace('\n',''), passwd=str(dbfile[1]).replace('\n',''))
 
 date = datetime.now()
 
@@ -139,7 +141,7 @@ class Example(wx.Frame):
 		print project_id
 		
 	def create_database(self):
-		cxn = MySQLdb.connect('localhost','root',"")
+		cxn = MySQLdb.connect('localhost',user=str(dbfile[0]).replace('\n',''), passwd=str(dbfile[1]).replace('\n',''))
 
 		date = datetime.now()
 		

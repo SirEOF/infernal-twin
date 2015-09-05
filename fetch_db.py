@@ -5,7 +5,10 @@ import MySQLdb as mdb
 import wx
 import generate_pdf_file
 import view_projects
-con = mdb.connect('localhost', 'root', '', 'InfernalWireless');
+
+dbfile = open('dbconnect.conf', 'r').readlines()
+
+con = mdb.connect('localhost', str(dbfile[0]).replace('\n',''), str(dbfile[1]).replace('\n',''), 'InfernalWireless');
 
 cur = con.cursor()
 cur.execute("SELECT ProjectId,ProjectName FROM Projects")

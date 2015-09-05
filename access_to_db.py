@@ -43,8 +43,9 @@ class Example(wx.Frame):
 		
 		try:
 			#
+			dbfile = open('dbconnect.conf', 'r').readlines()
 		
-			db = MySQLdb.connect("localhost","root","","wpa_crack" )
+			db = MySQLdb.connect("localhost",str(dbfile[0]).replace('\n',''),str(dbfile[1]).replace('\n',''),"wpa_crack" )
 		
 			# prepare a cursor object using cursor() method
 			cursor = db.cursor()
@@ -60,7 +61,9 @@ class Example(wx.Frame):
 		try:
 			#
 			# Open database connection
-			db = MySQLdb.connect("localhost","root","","wpa_crack" )
+			dbfile = open('dbconnect.conf', 'r').readlines()
+			
+			db = MySQLdb.connect("localhost",str(dbfile[0]).replace('\n',''), str(dbfile[1]).replace('\n',''),"wpa_crack" )
 		
 			# prepare a cursor object using cursor() method
 			cursor = db.cursor()

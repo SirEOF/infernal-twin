@@ -3,13 +3,12 @@ Author is not responsible for misuse.
 
 Usage: python InfernalWireless.py (from the same folder where you codes exist)
 
-1. Please update the sql_insert.py, fetch_db.py and access_to_db.py files with your DB credentials. 
-
 thank you for reading. 
 
 For any comments and suggestions please email on 3ntr0py1337@gmail.com
 
-
+NOTE:
+Please make sure to run the 'configure under File menu to install required software'
 
 Release Notes: 
 
@@ -64,6 +63,9 @@ BUG FIXES:
 - Fixed WPA2 Cracking
 - Fixed Infernal Wireless
 - Fixed Free AP
+- Check for requirements
+- DB implementation via config file
+- Improved Catch and error
 - Check for requirements
 
 Coming Soon: 

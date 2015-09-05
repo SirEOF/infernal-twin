@@ -8,7 +8,9 @@ def connect_to_database():
 	
 	#~ dbusername = raw_input('Enter the username of the DB: ')
 	#~ dbpassword = raw_input('Enter the password of the DB: ')
-	db_connection = MySQLdb.connect(host='localhost', user='root', passwd='')
+	dbfile = open('dbconnect.conf', 'r').readlines()
+	
+	db_connection = MySQLdb.connect(host='localhost', user=str(dbfile[0]).replace('\n',''), passwd=str(dbfile[1]).replace('\n',''))
 	cursor = db_connection.cursor()
 	cursor.execute('CREATE DATABASE IF NOT EXISTS wpa_crack')
 	cursor.execute('USE wpa_crack')
